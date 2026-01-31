@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ファンシーひらがなレッスン</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Klee+One:wght@600&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- キラキラ背景エフェクト -->
+    <div class="sparkle-container" id="sparkles"></div>
+
+    <!-- メインメニュー（おうち画面） -->
+    <div id="main-menu" class="screen active">
+        <div class="menu-header">
+            <img src="images/cinnamon.png" alt="シナモロール" class="mascot bounce">
+            <h1 class="title rainbow-text">ひらがな<br>レッスン</h1>
+        </div>
+
+        <div class="menu-buttons">
+            <button class="menu-btn blue" onclick="startMode('lines')">
+                <span class="btn-icon">✨</span>
+                <span class="btn-text">せんつなぎ</span>
+                <span class="btn-ribbon">⭐</span>
+            </button>
+
+            <button class="menu-btn purple" onclick="startMode('hiragana')">
+                <span class="btn-icon">📝</span>
+                <span class="btn-text">ひらがな<br>なぞり</span>
+                <span class="btn-ribbon">💖</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- せんつなぎ画面 -->
+    <div id="lines-screen" class="screen">
+        <div class="screen-header">
+            <button class="back-btn" onclick="goHome()">🏠</button>
+            <h2>せんつなぎ</h2>
+            <div class="progress-hearts" id="lines-progress">
+                <span>🤍</span><span>🤍</span><span>🤍</span><span>🤍</span>
+            </div>
+        </div>
+        <div class="game-area">
+            <p class="instruction">せんの うえを なぞって とどけてね！</p>
+            <div class="canvas-container">
+                <canvas id="lines-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- ひらがななぞり画面 -->
+    <div id="hiragana-screen" class="screen">
+        <div class="screen-header">
+            <button class="back-btn" onclick="goHome()">🏠</button>
+            <h2 id="hiragana-level-title">レベル１</h2>
+            <div class="progress-hearts" id="hiragana-progress">
+                <span>🤍</span><span>🤍</span><span>🤍</span><span>🤍</span><span>🤍</span>
+            </div>
+        </div>
+        <div class="game-area">
+            <p class="instruction">ひらがなを なぞってね！</p>
+            <div class="hiragana-display" id="current-hiragana">し</div>
+            <div class="canvas-container">
+                <canvas id="hiragana-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- クリア演出オーバーレイ -->
+    <div id="celebration" class="celebration hidden">
+        <div class="celebration-content">
+            <img src="images/cinnamon.png" alt="シナモロール" class="celebration-mascot">
+            <h2 class="celebration-text" id="celebration-title">すごーい！✨</h2>
+            <p class="celebration-sub" id="celebration-sub">やったね！💖</p>
+            <button class="next-btn" id="next-btn" onclick="nextStage()">つぎへ ▶</button>
+        </div>
+    </div>
+
+    <!-- さいてんちゅう画面 -->
+    <div id="checking" class="celebration hidden">
+        <div class="celebration-content">
+            <img src="images/cinnamon.png" alt="シナモロール" class="celebration-mascot">
+            <h2 class="celebration-text checking-text">さいてんちゅう...</h2>
+        </div>
+    </div>
+
+    <!-- 全クリア画面 -->
+    <div id="all-clear" class="celebration hidden">
+        <div class="celebration-content">
+            <img src="images/cinnamon.png" alt="シナモロール" class="celebration-mascot">
+            <h2 class="celebration-text">🎉 ぜんぶ クリア！🎉</h2>
+            <p class="celebration-sub">よく がんばったね！</p>
+            <button class="next-btn"
+                onclick="goHome(); document.getElementById('all-clear').classList.add('hidden');">おうちに かえる 🏠</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
